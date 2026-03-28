@@ -19,3 +19,13 @@ DB_PASS="password123"
 
 echo "=== Nettoyage du dossier web par défaut ==="
 sudo rm -rf "${SITE_DIR:?}/"*
+
+
+echo "=== Téléchargement de WordPress ==="
+cd /tmp
+rm -rf wordpress latest.tar.gz
+wget -O latest.tar.gz https://wordpress.org/latest.tar.gz
+tar -xzf latest.tar.gz
+
+echo "=== Copie des fichiers WordPress ==="
+sudo cp -r wordpress/* "$SITE_DIR"
