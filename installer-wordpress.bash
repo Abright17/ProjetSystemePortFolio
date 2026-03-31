@@ -38,3 +38,10 @@ GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '$DB_USER'@'localhost';
 FLUSH PRIVILEGES;
 EOF
 
+echo "=== Configuration de wp-config.php ==="
+cd "$SITE_DIR"
+sudo cp wp-config-sample.php wp-config.php
+
+sudo sed -i "s/database_name_here/$DB_NAME/" wp-config.php
+sudo sed -i "s/username_here/$DB_USER/" wp-config.php
+sudo sed -i "s/password_here/$DB_PASS/" wp-config.php
