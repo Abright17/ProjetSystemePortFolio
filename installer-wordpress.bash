@@ -50,3 +50,11 @@ echo "=== Permissions ==="
 sudo chown -R www-data:www-data "$SITE_DIR"
 sudo find "$SITE_DIR" -type d -exec chmod 755 {} \;
 sudo find "$SITE_DIR" -type f -exec chmod 644 {} \;
+
+echo "=== Activation de mod_rewrite ==="
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+
+echo "=== Installation terminée ==="
+IP_VM=$(hostname -I | awk '{print $2}')
+echo "Ouvre maintenant : http://$IP_VM/"
