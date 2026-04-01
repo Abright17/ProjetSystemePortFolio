@@ -45,3 +45,8 @@ sudo cp wp-config-sample.php wp-config.php
 sudo sed -i "s/database_name_here/$DB_NAME/" wp-config.php
 sudo sed -i "s/username_here/$DB_USER/" wp-config.php
 sudo sed -i "s/password_here/$DB_PASS/" wp-config.php
+
+echo "=== Permissions ==="
+sudo chown -R www-data:www-data "$SITE_DIR"
+sudo find "$SITE_DIR" -type d -exec chmod 755 {} \;
+sudo find "$SITE_DIR" -type f -exec chmod 644 {} \;
